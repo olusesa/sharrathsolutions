@@ -1,0 +1,34 @@
+
+cloud-privelage-broker.yaml
+
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cloud-privilege-broker
+  namespace: argocd
+spec:
+  description: "Wallstreet Bets is going to hate this broker"
+  destinations:
+  - namespace: cloud-privilege-broker
+    server: https://DC562B007375BD6788916029314E1C00.sk1.us-east-1.eks.amazonaws.com
+
+  orphanedResources:
+    warn: true
+    ignore:
+      - kind: ConfigMap
+        name: istio-ca-root-cert
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap-cloud-privilege-broker
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: argocd
+  source:
+    path: production/cloud-privilege-broker/bootstrap
+    repoURL: git@github.com:BeyondTrust/hatchery.git
+    targetRevision: master
