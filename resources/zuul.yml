@@ -15,11 +15,11 @@ spec:
       - kind: ConfigMap
         name: istio-ca-root-cert
 
-  ignoreDifferences:
-  - group: apps
-    kind: Deployment
-    jsonPointers:
-    - /spec/replicas
+  # ignoreDifferences:
+  # - group: apps
+  #   kind: Deployment
+  #   jsonPointers:
+  #   - /spec/replicas
 
 ---
 apiVersion: argoproj.io/v1alpha1

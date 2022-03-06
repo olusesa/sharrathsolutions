@@ -11,11 +11,11 @@ spec:
   - namespace: datadog-system
     server: https://DC562B007375BD6788916029314E1C00.sk1.us-east-1.eks.amazonaws.com
 
-  ignoreDifferences:
-  - group: apps
-    kind: Deployment
-    jsonPointers:
-    - /spec/replicas
+  # ignoreDifferences:
+  # - group: apps
+  #   kind: Deployment
+  #   jsonPointers:
+  #   - /spec/replicas
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
