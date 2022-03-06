@@ -10,6 +10,15 @@ spec:
     server: https://DC562B007375BD6788916029314E1C00.sk1.us-east-1.eks.amazonaws.com
   - namespace: datadog-system
     server: https://DC562B007375BD6788916029314E1C00.sk1.us-east-1.eks.amazonaws.com
+
+  syncPolicy:
+    automated: {}
+  ignoreDifferences:
+     - group: apiextensions.k8s.io/v1
+       name: trafficsplits.split.smi-spec.io
+       kind: CustomResourceDefinition
+       jsonPointers:
+         - /spec/preserveUnknownFields
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
