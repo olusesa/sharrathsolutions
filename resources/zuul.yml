@@ -15,12 +15,6 @@ spec:
       - kind: ConfigMap
         name: istio-ca-root-cert
 
-  ignoreDifferences:
-  - group: zuul
-    kind:  AppProject
-    jsonPointers:
-    - /spec/replicas
-
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
